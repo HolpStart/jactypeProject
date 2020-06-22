@@ -1,0 +1,23 @@
+
+public abstract  class AbstactCarLmpl implements Car {
+    @Override
+   public void move(String command){
+
+   }
+    //获得X的位置
+    @Override
+    public int getPositionX(){
+        return 0;
+
+    }
+    //获得Y的位子
+    @Override
+   public int getPositionY(){
+        return 0;
+    }
+    // 取向
+    @Override
+    public String getOrientation(){
+        return  null;
+    }
+}
