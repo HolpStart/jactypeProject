@@ -1,0 +1,35 @@
+package com.jac.car;
+
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+public class CarImpl implements Car {
+
+    //初始化位置和方位 东-E 西-W 南-S 北-N
+    private static Map  paramMap = new HashMap<>();
+    static {
+        paramMap.put("X",1);
+        paramMap.put("Y",1);
+        paramMap.put("face","N");
+    }
+    @Override
+    public void move(String command) {
+    }
+
+    @Override
+    public int getPositionX() {
+        return  (Integer)paramMap.get("X");
+    }
+    @Override
+    public int getPositionY() {
+        return (Integer)paramMap.get("Y");
+    }
+    //当前的面向
+    @Override
+    public String getOrientation() {
+        return (String)paramMap.get("face");
+    }
+}
