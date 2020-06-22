@@ -1,0 +1,65 @@
+package com.jac.car;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ *汽车的控制层
+ */
+@Controller
+public class CarController {
+
+    @Autowired
+    CarImpl car;
+    @ResponseBody
+    @RequestMapping("/carMove")
+    public CarPojo carMove(@RequestBody CarPojo carPojo) {
+        String direction = carPojo.getDirection();
+
+        if ("clockwise".equals(direction)) {//顺时整旋转
+            //当前面向北
+            String face = car.getOrientation();
+            //当前坐标位置
+            Integer x = car.getPositionX();
+            Integer y = car.getPositionY();
+            //旋转后
+            CarPojo car = new CarPojo();
+            car.setFace("E");
+            car.setX(1);
+            car.setY(1);
+            return car;
+        } else if ("forward".equals(direction)) {//向前移动
+
+            //当前面向北
+            String face = car.getOrientation();
+            //当前坐标位置
+            Integer x = car.getPositionX();
+            Integer y = car.getPositionY();
+            if ("N".equals(face)) {//当前面向北
+                CarPojo car = new CarPojo();
+                car.setFace("N");
+                car.setX(x);
+                car.setY(y);
+                return car;
+            } else if ("E".equals(face)) {//当前面向东
+                CarPojo car = new CarPojo();
+                car.setFace("E");
+                car.setX(x + 2);
+                car.setY(y);
+                return car;
+            } else if ("E".equals(face)) {//当前面向东 且移动两次
+                CarPojo car = new CarPojo();
+                car.setFace("E");
+                car.setX(x + 2);
+                car.setY(y);
+                return car;
+            }
+
+        }
+        return carPojo;
+    }
+
+}
