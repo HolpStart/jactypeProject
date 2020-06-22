@@ -1,0 +1,10 @@
+interface Car {
+    //移动的命令
+    void move(String command);
+    //获得X的位置
+    int getPositionX();
+    //获得Y的位子
+    int getPositionY();
+    // 取向
+    String getOrientation();
+}
